@@ -9,16 +9,12 @@ public class Main {
         System.out.print("Enter your message: ");
         String text = sc.nextLine();
 
-        String key = String.valueOf(OTP.generateKey(text));
-        System.out.println(key);
-
         System.out.print("Choose an option, for encrypt->1 and for decrypt->0: ");
         int option = sc.nextInt();
-
         OTP otp = new OTP();
         switch (option) {
             case 1:
-                otp.encrypt(text);
+                System.out.println(otp.encrypt(text));
                 break;
             case 0:
                 otp.decrypt(text);
