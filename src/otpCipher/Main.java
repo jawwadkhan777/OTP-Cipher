@@ -1,5 +1,6 @@
 package otpCipher;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -9,22 +10,22 @@ public class Main {
         System.out.print("Enter your message: ");
         String text = sc.nextLine();
 
-        System.out.print("Choose an option, for encrypt->1 and for decrypt->0: ");
-        int option = sc.nextInt();
         OTP otp = new OTP();
-        switch (option) {
-            case 1:
-                System.out.println(otp.encrypt(text));
-                break;
-            case 0:
-                otp.decrypt(text);
-                break;
-            default:
-                System.out.println("Invalid option, rerun and select an appropriate option!");
+        System.out.print("Choose an option, for encrypt->1 and for decrypt->0: ");
+        try {
+            int option = sc.nextInt();
+            switch (option) {
+                case 1:
+                    System.out.println("Encrypted message: " + otp.encrypt(text));
+                    break;
+                case 0:
+                    System.out.println("Decrypted message: " + otp.decrypt(text));
+                    break;
+                default:
+                    System.out.println("Invalid option, rerun and select an appropriate option!");
+            }
+        } catch (InputMismatchException exception) {
+            System.out.println("Invalid input, read the instruction carefully!");
         }
-
-
-
-
     }
 }
